@@ -1,0 +1,16 @@
+ static List<Integer> aa = new ArrayList<>();
+    static void sort(Node node) {
+        if (node == null) {
+            return;
+        }
+        aa.add(node.data);
+        sort(node.right);
+        sort(node.left);
+    }
+    public static void inOrder(Node root) {
+        if (root == null) {
+            return;
+        }
+        sort(root);
+        aa.stream().sorted().forEach(i->System.out.print(i +" "));
+    }
