@@ -1,0 +1,14 @@
+public static Node insert(Node root,int data) {
+        if(root ==null){
+            Node a = new Node(data);
+            return a;
+        }
+    	if(data <root.data) 
+        root.left=insert(root.left,data);
+        else if(data >root.data) 
+        root.right=insert(root.right,data);
+        else{
+            return root;
+        }
+        return root;
+    }
