@@ -1,0 +1,28 @@
+    public static class hadiQueue<T> {
+        Stack<T> stin = new Stack<>();
+        Stack<T> stout = new Stack<>();
+
+        public void enqueue(T t) {
+            stin.push(t);
+        }
+
+        public T dequeue() {
+            transfer();
+            T pop = stout.pop();
+            return pop;
+        }
+
+        public T print() {
+            transfer();
+            return stout.peek();
+        }
+
+        private void transfer() {
+            if (stout.isEmpty()) {
+                while (!stin.isEmpty()) {
+                    stout.push(stin.pop());
+                }
+            }
+        }
+
+    }
