@@ -1,0 +1,33 @@
+// Sort by merging sorted array
+
+
+    public static int[] sortArray(int[] a) {
+        if (a.length == 1) {
+            return a;
+        }
+        int mid = a.length / 2;
+        int[] left = Arrays.copyOfRange(a, 0, mid);
+        int[] right = Arrays.copyOfRange(a, mid, a.length);
+        return mergeTwoSortedArray(sortArray(left), sortArray(right));
+
+    }
+    public static int[] mergeTwoSortedArray(int[] a1, int[] a2) {
+        int[] a3 = new int[a1.length + a2.length];
+        int i = 0;
+        int j = 0;
+        int x = 0;
+        while (i < a1.length && j < a2.length) {
+            if (a1[i] < a2[j]) {
+                a3[x++] = a1[i++];
+            } else {
+                a3[x++] = a2[j++];
+            }
+        }
+        for (int k = i; k < a1.length; k++) {
+            a3[x++] = a1[k];
+        }
+        for (int k = j; k < a2.length; k++) {
+            a3[x++] = a2[k];
+        }
+        return a3;
+    }
